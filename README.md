@@ -118,8 +118,3 @@ Analyse financière · Data Visualization · Business Intelligence
 
 ---
 
-### 📌 Note sur le fichier `.pbix`
-Le format `.pbix` de Power BI est binaire et ne peut pas être généré par script. Le dossier
-`powerbi/` fournit **toutes les mesures DAX** et un **guide de reconstruction pas-à-pas**
-(~20 min) à partir du CSV nettoyé. Enregistrez le résultat sous
-`powerbi/Financial_Analysis.pbix`.
