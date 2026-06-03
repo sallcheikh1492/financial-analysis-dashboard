@@ -1,0 +1,22 @@
+# Python
+__pycache__/
+*.py[cod]
+.ipynb_checkpoints/
+.venv/
+venv/
+env/
+
+# OS / éditeurs
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Power BI (fichiers temporaires)
+*.tmp
+~$*
+
+# Garder les livrables :
+# - data/*.csv, data/*.xlsx (jeux de données du projet)
+# - reports/*.pdf, reports/figures/*.png
+# - notebooks/*.ipynb (exécuté)

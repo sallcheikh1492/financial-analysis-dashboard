@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Analyse financière d'une entreprise — Projet BI</title>
+<meta name="description" content="Projet Business Intelligence end-to-end : analyse financière, KPI, prévisions et dashboard. Python · SQL · Power BI.">
+<style>
+  :root{
+    --navy:#1F3864; --blue:#2E5496; --accent:#55A868; --bg:#0e1726;
+    --card:#16213a; --text:#e8edf6; --muted:#9fb0cc; --line:#2a3a5c;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{font-family:-apple-system,Segoe UI,Roboto,Helvetica,Arial,sans-serif;
+       background:var(--bg);color:var(--text);line-height:1.6}
+  a{color:#7fb1ff;text-decoration:none}
+  .wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+  header.hero{background:linear-gradient(135deg,var(--navy),#0a1020);
+       padding:80px 0 60px;border-bottom:1px solid var(--line)}
+  .badge{display:inline-block;background:rgba(85,168,104,.15);color:#8fe0a6;
+       border:1px solid rgba(85,168,104,.4);padding:4px 12px;border-radius:20px;
+       font-size:13px;font-weight:600;margin-bottom:18px}
+  h1{font-size:clamp(28px,5vw,46px);line-height:1.15;margin-bottom:14px}
+  h1 span{color:var(--accent)}
+  .sub{color:var(--muted);font-size:18px;max-width:680px}
+  .cta{margin-top:28px;display:flex;gap:12px;flex-wrap:wrap}
+  .btn{padding:12px 22px;border-radius:8px;font-weight:600;font-size:15px;transition:.2s}
+  .btn-primary{background:var(--accent);color:#06210f}
+  .btn-primary:hover{background:#6cc585}
+  .btn-ghost{border:1px solid var(--line);color:var(--text)}
+  .btn-ghost:hover{border-color:#7fb1ff}
+  section{padding:56px 0;border-bottom:1px solid var(--line)}
+  h2{font-size:28px;margin-bottom:8px}
+  .lead{color:var(--muted);margin-bottom:30px;max-width:720px}
+  .kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:16px}
+  .kpi{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:22px}
+  .kpi .v{font-size:30px;font-weight:700;color:#fff}
+  .kpi .l{color:var(--muted);font-size:14px;margin-top:4px}
+  .kpi .v.green{color:var(--accent)}
+  .grid2{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:22px}
+  .insight{background:var(--card);border:1px solid var(--line);border-left:4px solid var(--accent);
+       border-radius:10px;padding:18px 20px}
+  .insight b{color:#fff}
+  .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:20px}
+  figure{background:var(--card);border:1px solid var(--line);border-radius:12px;overflow:hidden}
+  figure img{width:100%;display:block;background:#fff}
+  figcaption{padding:12px 16px;color:var(--muted);font-size:14px}
+  .stack{display:flex;flex-wrap:wrap;gap:10px}
+  .chip{background:var(--card);border:1px solid var(--line);padding:8px 14px;border-radius:8px;font-size:14px}
+  .deliver{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}
+  .deliver a{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:18px;display:block;transition:.2s}
+  .deliver a:hover{border-color:var(--accent);transform:translateY(-2px)}
+  .deliver .t{color:#fff;font-weight:600;font-size:16px}
+  .deliver .d{color:var(--muted);font-size:13px;margin-top:4px}
+  footer{padding:40px 0;color:var(--muted);font-size:14px;text-align:center}
+  .steps{counter-reset:s;list-style:none}
+  .steps li{position:relative;padding:10px 0 10px 46px;color:var(--muted)}
+  .steps li::before{counter-increment:s;content:counter(s);position:absolute;left:0;top:8px;
+       width:30px;height:30px;background:var(--blue);color:#fff;border-radius:50%;
+       display:flex;align-items:center;justify-content:center;font-weight:700;font-size:14px}
+  .steps li b{color:var(--text)}
+</style>
+</head>
+<body>
+<header class="hero">
+  <div class="wrap">
+    <span class="badge">● Projet Business Intelligence — Portfolio Data Analyst / BI</span>
+    <h1>Analyse financière<br>d'une <span>entreprise</span></h1>
+    <p class="sub">Pipeline BI complet sur 700 transactions (2013–2014) : nettoyage des données,
+       KPI financiers, compte de résultat, prévisions et dashboard interactif —
+       avec <b>Python</b>, <b>SQL</b> et <b>Power BI</b>.</p>
+    <div class="cta">
+      <a class="btn btn-primary" href="notebooks/financial_analysis.ipynb">📓 Voir le notebook</a>
+      <a class="btn btn-ghost" href="reports/Financial_Analysis_Report.pdf">📄 Rapport PDF</a>
+      <a class="btn btn-ghost" href="https://github.com/" id="repo-link">⭐ Code source</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <h2>📈 Indicateurs clés</h2>
+    <p class="lead">Résultats agrégés sur l'ensemble de la période analysée.</p>
+    <div class="kpis">
+      <div class="kpi"><div class="v green">118,7 M$</div><div class="l">Chiffre d'affaires</div></div>
+      <div class="kpi"><div class="v green">16,9 M$</div><div class="l">Profit total</div></div>
+      <div class="kpi"><div class="v">14,2 %</div><div class="l">Marge moyenne</div></div>
+      <div class="kpi"><div class="v">16,6 %</div><div class="l">ROI global</div></div>
+      <div class="kpi"><div class="v">101,8 M$</div><div class="l">Coût des ventes</div></div>
+      <div class="kpi"><div class="v">1,13 M</div><div class="l">Unités vendues</div></div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>💡 Insights principaux</h2>
+    <p class="lead">Les conclusions métier tirées de l'analyse.</p>
+    <div class="grid2">
+      <div class="insight">🥇 <b>Paseo</b> est le produit le plus profitable (≈ 4,8 M$) ; <b>Amarilla</b> affiche la meilleure marge.</div>
+      <div class="insight">🏢 Le segment <b>Government</b> est le premier contributeur au profit ; <b>Channel Partners</b> a la meilleure marge.</div>
+      <div class="insight">🌍 Les <b>États-Unis</b> constituent le premier marché (≈ 25 M$ de CA).</div>
+      <div class="insight">💸 La marge se <b>dégrade fortement</b> avec les remises élevées (Discount Band = High).</div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>📊 Visualisations</h2>
+    <p class="lead">Graphiques produits par le notebook Python (Matplotlib / Seaborn).</p>
+    <div class="gallery">
+      <figure><img src="reports/figures/02_monthly_evolution.png" alt="Évolution mensuelle">
+        <figcaption>Évolution mensuelle du CA et du profit</figcaption></figure>
+      <figure><img src="reports/figures/03_performance_dimensions.png" alt="Performance par dimension">
+        <figcaption>Performance par produit, segment et pays</figcaption></figure>
+      <figure><img src="reports/figures/04_margin_discount.png" alt="Marges et remises">
+        <figcaption>Marges et impact des remises commerciales</figcaption></figure>
+      <figure><img src="reports/figures/06_forecast_future.png" alt="Prévision">
+        <figcaption>Prévision du chiffre d'affaires sur 6 mois</figcaption></figure>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>🛠️ Méthodologie</h2>
+    <p class="lead">Une chaîne analytique reproductible, de la donnée brute à la décision.</p>
+    <ol class="steps">
+      <li><b>Compréhension & nettoyage</b> — valeurs manquantes, doublons, types, outliers (IQR), contrôle des identités comptables.</li>
+      <li><b>Variables calculées</b> — taux de marge, ratio de coût, taux de remise, ROI.</li>
+      <li><b>Analyse SQL</b> — KPI, top produits, performances pays/segment, croissance mensuelle (fonctions fenêtre).</li>
+      <li><b>Compte de résultat simplifié</b> — Ventes brutes → Remises → CA net → COGS → Profit.</li>
+      <li><b>Prévisions</b> — comparaison moyenne mobile / régression linéaire / SARIMA (MAE, RMSE).</li>
+      <li><b>Dashboard Power BI</b> — KPI, évolutions, carte, marges, prévisions + filtres interactifs.</li>
+    </ol>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>📦 Livrables</h2>
+    <p class="lead">Tous les artefacts du projet.</p>
+    <div class="deliver">
+      <a href="notebooks/financial_analysis.ipynb"><div class="t">📓 Notebook Python</div><div class="d">Nettoyage, analyse, prévisions</div></a>
+      <a href="sql/03_analysis_queries.sql"><div class="t">🗄️ Scripts SQL</div><div class="d">Schéma + 10 requêtes d'analyse</div></a>
+      <a href="powerbi/Power_BI_Build_Guide.md"><div class="t">📊 Power BI</div><div class="d">Mesures DAX + guide dashboard</div></a>
+      <a href="reports/Financial_Analysis_Report.pdf"><div class="t">📄 Rapport PDF</div><div class="d">Synthèse exécutive (3 pages)</div></a>
+    </div>
+  </div>
+</section>
+
+<section style="border-bottom:none">
+  <div class="wrap">
+    <h2>🧰 Stack technique</h2>
+    <p class="lead">&nbsp;</p>
+    <div class="stack">
+      <span class="chip">Python</span><span class="chip">Pandas</span><span class="chip">NumPy</span>
+      <span class="chip">Matplotlib</span><span class="chip">Seaborn</span><span class="chip">scikit-learn</span>
+      <span class="chip">statsmodels</span><span class="chip">SQL / PostgreSQL</span>
+      <span class="chip">Power BI</span><span class="chip">Jupyter</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    Projet portfolio — Cheikh Sall · Data Analyst / BI Developer ·
+    Dataset : Microsoft Financial Sample
+  </div>
+</footer>
+</body>
+</html>
