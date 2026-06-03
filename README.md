@@ -1,5 +1,7 @@
 # 📊 Analyse financière d'une entreprise — Projet Business Intelligence
 
+🌐 **Langue :** **🇫🇷 Français** · [🇬🇧 English](README.en.md)
+
 Projet BI de bout en bout analysant les performances financières d'une entreprise :
 nettoyage des données, KPI financiers, compte de résultat, prévisions et dashboard interactif.
 Réalisé avec **Python · SQL · Power BI**.
