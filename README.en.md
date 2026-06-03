@@ -2,6 +2,8 @@
 
 🌐 **Language:** [🇫🇷 Français](README.md) · **🇬🇧 English**
 
+### 🔗 [**▶ View the live demo (GitHub Pages)**](https://kheuch1492.github.io/financial-analysis-dashboard/)
+
 End-to-end BI project analyzing a company's financial performance: data cleaning,
 financial KPIs, income statement, forecasting and an interactive dashboard.
 Built with **Python · SQL · Power BI**.
