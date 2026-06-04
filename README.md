@@ -56,8 +56,10 @@ financial-analysis-dashboard/
 │   ├── 02_load_data.sql               # import du CSV (COPY / \copy)
 │   └── 03_analysis_queries.sql        # 10 requêtes d'analyse
 ├── powerbi/
+│   ├── Financial_Analysis.pbix        # dashboard final (4 pages, interactif)
 │   ├── DAX_measures.md                # toutes les mesures DAX
-│   └── Power_BI_Build_Guide.md        # guide pas-à-pas du dashboard
+│   ├── Power_BI_Build_Guide.md        # guide pas-à-pas du dashboard
+│   └── assets/                        # arrière-plans de page (accueil + contenu)
 ├── reports/
 │   ├── Financial_Analysis_Report.pdf  # rapport synthétique (3 pages)
 │   └── figures/                       # 6 graphiques exportés

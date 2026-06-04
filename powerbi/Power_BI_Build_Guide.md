@@ -1,8 +1,11 @@
 # Guide de construction du dashboard Power BI
 
-> **Note technique :** un fichier `.pbix` est un format binaire propriétaire qui ne peut pas
-> être généré par script. Ce guide permet de reconstruire le dashboard en ~20 minutes à partir
-> des données nettoyées. Enregistrez ensuite le fichier sous `powerbi/Financial_Analysis.pbix`.
+> ✅ **Le dashboard final est livré : [`Financial_Analysis.pbix`](Financial_Analysis.pbix)**
+> (4 pages : Accueil · Vue d'ensemble · Marges & Coûts · Prévisions).
+> Les arrière-plans de page sont dans [`assets/`](assets) (`page_accueil.png`, `page_background.png`).
+>
+> Ce guide documente la **reconstruction** du dashboard (~20 min) à partir de
+> `data/financial_data_clean.csv`, pour ceux qui veulent comprendre ou reproduire la démarche.
 
 ## Étape 1 — Importer les données
 1. **Accueil → Obtenir les données → Texte/CSV**
