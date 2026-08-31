@@ -2,7 +2,7 @@
 
 🌐 **Langue :** **🇫🇷 Français** · [🇬🇧 English](README.en.md)
 
-### 🔗 [**▶ Voir la démo en ligne (GitHub Pages)**](https://kheuch1492.github.io/financial-analysis-dashboard/)
+### 🔗 [**▶ Voir la démo en ligne (GitHub Pages)**](https://sallcheikh1492.github.io/financial-analysis-dashboard/)
 
 Projet BI de bout en bout analysant les performances financières d'une entreprise :
 nettoyage des données, KPI financiers, compte de résultat, prévisions et dashboard interactif.
